@@ -2083,9 +2083,9 @@ def main(argv):
         samc = output_dir + out + '.Crick.sam'
         SAMC = open(samc, 'w')
         SAMW.write(
-            '@HD\tVN:1.0\tSO:unsorted')
+            '@HD\tVN:1.0\tSO:unsorted\n')
         SAMC.write(
-            '@HD\tVN:1.0\tSO:unsorted')
+            '@HD\tVN:1.0\tSO:unsorted\n')
         for chrom in sorted(fa.keys()):
             SAMW.write('@SQ\tSN:' + chrom + '\tLN:' + str(len(fa[chrom])) + '\n')
             SAMC.write('@SQ\tSN:' + chrom + '\tLN:' + str(len(fa[chrom])) + '\n')
