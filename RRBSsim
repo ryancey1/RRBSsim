@@ -1036,8 +1036,9 @@ def create_reads_for_input_or_random_snp(ref, ref_start, cut_site, end_repair_fo
                            random_sequencing_errors, end_part, end_part_sigma, end_qual, end_qual_sigma, dynamic_qual, input_quals, first_qual_R1, first_qual_R2, matrix_qual_R1, matrix_qual_R2, phred33_quals, phred64_quals)
     if technology == 'Solexa':
         FQ1.close()
-        SAMW.close()
-        SAMC.close()
+        if SAM:
+            SAMW.close()
+            SAMC.close()
         if paired_end:
             FQ2.close()
 
