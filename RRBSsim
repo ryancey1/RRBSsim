@@ -1657,7 +1657,7 @@ def main(argv):
     output_ref = False
     dbsnpfile = ''
     Polyploid = 2
-    SAM = True
+    SAM = False
     adapter1 = "ACACTCTTTCCCTACACGACGCTCTTCCGATCT"
     adapter2 = "GATCGGAAGAGCACACGTCTGAACTCCAGTCAC"
     p5 = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATGATACGGCGACCACCGAGATCT"
@@ -2081,9 +2081,9 @@ def main(argv):
         samc = output_dir + out + '.Crick.sam'
         SAMC = open(samc, 'w')
         SAMW.write(
-            '@HD\tVN:1.0\tSO:unsorted\tYou can get methylcytosine points on the Watson strand, the cytosines\' methylation information on reference.\n')
+            '@HD\tVN:1.0\tSO:unsorted')
         SAMC.write(
-            '@HD\tVN:1.0\tSO:unsorted\tYou can get methylcytosine points on the Crick strand, the guanines\' methylation information on reference.\n')
+            '@HD\tVN:1.0\tSO:unsorted')
         for chrom in sorted(fa.keys()):
             SAMW.write('@SQ\tSN:' + chrom + '\tLN:' + str(len(fa[chrom])) + '\n')
             SAMC.write('@SQ\tSN:' + chrom + '\tLN:' + str(len(fa[chrom])) + '\n')
