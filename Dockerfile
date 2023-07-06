@@ -5,7 +5,7 @@
 
 
 # base image for python2.7
-FROM ubuntu:17.10
+FROM ubuntu:14.04
 
 # Author
 MAINTAINER xwsun@zju.edu.cn version: 0.1.0
@@ -30,14 +30,20 @@ RUN apt-get install --yes python-pip
 
 
 # pyfasta Installation
-RUN pip install pyfasta
+RUN apt-get install -y wget
+RUN wget "https://files.pythonhosted.org/packages/be/3f/794fbcdaaa2113f0a1d16a962463896c1a6bdab77bd63f33a8f16aae6cdc/pyfasta-0.5.2.tar.gz"
+RUN tar -zxvf pyfasta-0.5.2.tar.gz && cd pyfasta-0.5.2 && python setup.py install && cd ..
 
 # pirs Downloading
-RUN apt-get install -y wget
-RUN wget -q ftp://ftp.genomics.org.cn/pub/pIRS/pIRS_111.tgz -O- | tar xzvf - -C /opt/ && \
-    ln -s /opt/pIRS_111/ /opt/pirs
+RUN apt-get install -y \
+    git \
+    libboost-dev \
+    zlib1g-dev
+RUN git clone https://github.com/galaxy001/pirs.git /opt/pirs --branch v1.11 --single-branch && \
+    cd /opt/pirs && \
+    make && \
+    cd -
 
-RUN apt-get install -y git
 RUN git clone https://github.com/xwBio/RRBSsim.git /opt/RRBSsim  && \
     chmod -R a+x /opt/RRBSsim
 
