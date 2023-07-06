@@ -2201,18 +2201,10 @@ def main(argv):
                                        qual_mu, qual_sigma, random_sequencing_errors, end_part, end_part_sigma,
                                        end_qual, end_qual_sigma, Dynamic_qual,input_quals, first_qual_R1, first_qual_R2, matrix_qual_R1, matrix_qual_R2, phred33_quals, phred64_quals)
             cat_map(samw, samc, fq1, fq2)
-    REF.close()
-    print(time.strftime('\tend at: %Y-%m-%d %H:%M:%S'))
+        REF.close()
+        print(time.strftime('\tend at: %Y-%m-%d %H:%M:%S'))
     elapsed = (time.time() - start_time) / 3600.0
     print("Total time used: %f h" % elapsed)
 
 if __name__ == '__main__':
     main(sys.argv[1:])
-
-
-
-
-
-
-
-
