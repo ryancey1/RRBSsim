@@ -1724,6 +1724,9 @@ def main(argv):
                 sys.exit()
         elif opt == '-l' or opt == '--length':
             reads_length_mu = int(arg)
+            if reads_length_mu == 150:
+                matrix_qual_R1 = py_dir + '/Base_Calling_Profiles/base_quality_profile_150.R1'
+                matrix_qual_R2 = py_dir + '/Base_Calling_Profiles/base_quality_profile_150.R2'
         elif opt == '--min':
             fragment_min = int(arg)
         elif opt == '--max':
