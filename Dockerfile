@@ -44,8 +44,11 @@ RUN git clone https://github.com/galaxy001/pirs.git /opt/pirs --branch v1.11 --s
     make && \
     cd -
 
-RUN git clone https://github.com/ryancey1/RRBSsim.git /opt/RRBSsim  && \
-    chmod -R a+x /opt/RRBSsim
+RUN git clone https://github.com/ryancey1/RRBSsim.git /opt/RRBSsim && \
+    cd /opt/RRBSsim && \
+    git pull && \
+    cd -
+RUN chmod -R a+x /opt/RRBSsim
 
 WORKDIR /home
 
