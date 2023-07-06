@@ -1725,7 +1725,7 @@ def main(argv):
         elif opt == '-l' or opt == '--length':
             reads_length_mu = int(arg)
             if reads_length_mu == 150:
-                print("Updating base qualities profile to 150bp\n")
+                print("Updating base qualities profile to 150bp.")
                 matrix_qual_R1 = py_dir + '/Base_Calling_Profiles/base_quality_profile_150.R1'
                 matrix_qual_R2 = py_dir + '/Base_Calling_Profiles/base_quality_profile_150.R2'
         elif opt == '--min':
