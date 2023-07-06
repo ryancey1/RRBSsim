@@ -1654,7 +1654,7 @@ def main(argv):
     p1 = 0.0005  # homozygote
     p2 = 0.001  # heterozygote
     CG_beta_distribution = CHG_beta_distribution = CHH_beta_distribution = True
-    output_ref = True
+    output_ref = False
     dbsnpfile = ''
     Polyploid = 2
     SAM = True
