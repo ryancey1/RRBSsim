@@ -1675,7 +1675,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(sys.argv[1:], "hf:d:l:spt:e:o:vRS:q",
                                    ["help", "fasta=", "genome_folder=", "multicore=", "seed=", "length=", "single_end",
-                                    "pair_end", "non_directional", "cut_site=", "min=", "max=", "adapter1=", "cr=",
+                                    "paired_end", "non_directional", "cut_site=", "min=", "max=", "adapter1=", "cr=",
                                     "adapter2=", "non_meth_adapter", "non_meth_end_repair_bases", "non_adapter","output=", "nPosInfo",
                                     "SAM", "version", "ref_methInfo", "ml=", "CG_level=", "CHG_level=", "CHH_level=", "mr=", "CG_rate=",
                                     "CHG_rate=", "CHH_rate=", "mC_ml=", "mCG_level=", "mCHG_level=", "mCHH_level=",
@@ -2147,9 +2147,6 @@ def main(argv):
                                        qual_mu, qual_sigma, random_sequencing_errors, end_part, end_part_sigma,
                                       end_qual, end_qual_sigma, Dynamic_qual,input_quals, first_qual_R1, first_qual_R2, matrix_qual_R1, matrix_qual_R2, phred33_quals, phred64_quals)
             cat_map(samw, samc, fq1, fq2)
-        REF.close()
-        print(time.strftime('\tend at: %Y-%m-%d %H:%M:%S'))
-
     elif Polyploid == 2:
         for chrom in sorted(fa.keys()):
             if seed:
@@ -2203,8 +2200,9 @@ def main(argv):
                                        qual_mu, qual_sigma, random_sequencing_errors, end_part, end_part_sigma,
                                        end_qual, end_qual_sigma, Dynamic_qual,input_quals, first_qual_R1, first_qual_R2, matrix_qual_R1, matrix_qual_R2, phred33_quals, phred64_quals)
             cat_map(samw, samc, fq1, fq2)
+    if output_ref:
         REF.close()
-        print(time.strftime('\tend at: %Y-%m-%d %H:%M:%S'))
+    print(time.strftime('\tend at: %Y-%m-%d %H:%M:%S'))
     elapsed = (time.time() - start_time) / 3600.0
     print("Total time used: %f h" % elapsed)
 
